@@ -21,8 +21,11 @@ except FileNotFoundError:
     with open('task.json', 'w') as f:
         json.dump(tasks, f)
 
-# Get the first Argv
-action = sys.argv[1]
+try:
+    # Get the first Argv
+    action = sys.argv[1]
+except IndexError:
+    print('Missing Argv')
 
 
 # Print Error if the arg is less than 2
@@ -33,14 +36,14 @@ if len(sys.argv) < 2:
 elif action == 'list' and len(sys.argv) == 2:
     for task in tasks:
         print(f'{task['id']}: {task["description"]} - status: {task["status"]}')
-elif action == 'list':
+# Display Status of the Todo
+elif action == 'list' and len(sys.argv) == 3:
     description = sys.argv[2]
     for task in tasks:
         if task['status'] == description:
             print(f'{task['id']}: {task["description"]} - status: {task["status"]}')
-        #     # sys.exit(0)
 # Add Task 
-elif action == 'add':
+elif action == 'add' and len(sys.argv) == 2:
     try:
         description = sys.argv[2]
     except IndexError:
@@ -66,7 +69,7 @@ elif action == 'add':
         json.dump(tasks, f)
 
     print(f"Task added successfully (ID: {task_id})")
-elif action == 'update':
+elif action == 'update' and len(sys.argv) == 4:
 
     # Get the Description and the task Id
     description = sys.argv[3]
@@ -81,7 +84,7 @@ elif action == 'update':
        
     with open('task.json', 'w') as f:
         json.dump(tasks, f)
-elif action == 'mark-in-progress':
+elif action == 'mark-in-progress' and len(sys.argv) == 2:
     # Get the Description and the task Id
     task_no = int(sys.argv[2])
 
@@ -92,7 +95,7 @@ elif action == 'mark-in-progress':
             print(f'{i+1}-{task['description']} is {task["status"]}')
     with open('task.json', 'w') as f:
         json.dump(tasks, f)
-elif action == 'mark-done':
+elif action == 'mark-done' and len(sys.argv) == 2:
     # Get the Description and the task Id
     task_no = int(sys.argv[2])
 
@@ -116,12 +119,6 @@ elif action == 'delete':
             
     with open('task.json', 'w') as f:
         json.dump(tasks, f)
-    
-
-    # for task in tasks:
-    #     print(f'{task['id']}: {task["description"]} - status: {task["status"]}')
 
 else:
     print("not running- error: Check the User Instruction")
-
-# print(tasks)

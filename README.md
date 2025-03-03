@@ -13,7 +13,7 @@ How to contribute to the project
 Include Tests -->
 
 # Task-Traker
-Task-Traker is a todo app that help track daily progress and help in productivity
+Task-Traker is a todo app that help track daily progress and help in productivity.
 
 ## Installation
 Have python install and run in CLI
