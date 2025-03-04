@@ -43,7 +43,7 @@ elif action == 'list' and len(sys.argv) == 3:
         if task['status'] == description:
             print(f'{task['id']}: {task["description"]} - status: {task["status"]}')
 # Add Task 
-elif action == 'add' and len(sys.argv) == 2:
+elif action == 'add' and len(sys.argv) == 3:
     try:
         description = sys.argv[2]
     except IndexError:
@@ -66,7 +66,7 @@ elif action == 'add' and len(sys.argv) == 2:
     tasks.append(task)
     # Write the tasks into JSON
     with open('task.json', 'w') as f:
-        json.dump(tasks, f)
+        json.dump(tasks, f, indent=4)
 
     print(f"Task added successfully (ID: {task_id})")
 elif action == 'update' and len(sys.argv) == 4:

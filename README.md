@@ -25,7 +25,20 @@ pip install python
 # Usage
 ```python
 # add Todo
-add 'Play Football'
+python task_tracker.py add "Buy groceries"
+
+python task_tracker.py list
+
+python task_tracker.py list todo
+
+python task_tracker.py update 1 "Go shopping"
+
+python task_tracker.py mark-in-progress 1
+
+python task_tracker.py mark-done 1
+
+python task_tracker.py delete 1
+
 
 ```
 
